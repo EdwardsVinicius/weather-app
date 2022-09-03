@@ -73,12 +73,12 @@ class MainActivity : AppCompatActivity() {
 
 
                 Log.d("Printed JSON :", prettyJson)
-//                var weatherModel: WeatherModel? = response.body()
-//                if (weatherModel != null) {
-//                    cityName.text = weatherModel.cityName
-//                    temperature.text = weatherModel.temperature
-//                    Picasso.get().load("http:" + weatherModel.icon).into(weatherIcon)
-//                }
+                var weatherModel: WeatherModel? = response.body()
+                if (weatherModel != null) {
+                    cityName.text = weatherModel.location.cityName
+                    temperature.text = weatherModel.current.temperature + "°C"
+                    Picasso.get().load("http:" + weatherModel.current.condition.icon).into(weatherIcon)
+                }
 
             }
         })

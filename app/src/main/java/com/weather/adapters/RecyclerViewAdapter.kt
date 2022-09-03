@@ -39,9 +39,9 @@ class RecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weatherModel = weatherList[position]
 
-        holder.temperature.text = weatherModel.temperature + "°C"
-        Picasso.get().load("http:" + weatherModel.icon).into(holder.icon)
-        holder.windSpeed.text = weatherModel.windSpeed + "Km/h"
+//        holder.temperature.text = weatherModel.temperature + "°C"
+//        Picasso.get().load("http:" + weatherModel.icon).into(holder.icon)
+//        holder.windSpeed.text = weatherModel.windSpeed + "Km/h"
 
     }
 
