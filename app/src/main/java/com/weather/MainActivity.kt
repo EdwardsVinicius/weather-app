@@ -15,6 +15,7 @@ import com.weather.api.APIService
 import com.weather.api.RetrofitConfig
 import com.weather.databinding.ActivityMainBinding
 import com.weather.model.WeatherModel
+import okhttp3.ResponseBody
 import org.json.JSONObject
 import org.json.JSONTokener
 import retrofit2.Call
@@ -57,19 +58,28 @@ class MainActivity : AppCompatActivity() {
         val service = retrofitClient.create(APIService::class.java)
         val callback = service.getWeather(q = "Manaus")
 
-        callback.enqueue(object : Callback<List<WeatherModel>> {
-            override fun onFailure(call: Call<List<WeatherModel>>, t: Throwable) {
+        callback.enqueue(object : Callback<WeatherModel> {
+            override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
                 Toast.makeText(baseContext, t.message, Toast.LENGTH_SHORT).show()
-                Log.e("RETORFIT_ERROR", t.message.toString())
+                Log.e("RETROFIT_ERROR", t.message.toString())
             }
 
-            override fun onResponse(call: Call<List<WeatherModel>>, response: Response<List<WeatherModel>>) {
-                Log.i("RETORFIT_DEBUG", response.toString())
-                response.body()?.forEach {
-                    temperature.text = temperature.text.toString()//.plus(it.body)
-                    weatherCondition.text = weatherCondition.text.toString()
-//                    Picasso.get().load(url).into(weatherIcon);
-                }
+            override fun onResponse(call: Call<WeatherModel>, response: Response<WeatherModel>) {
+                Log.i("RETROFIT_DEBUG", response.body().toString())
+                val gson = GsonBuilder().setPrettyPrinting().create()
+                val prettyJson = gson.toJson(
+                        response.body()
+                    )
+
+
+                Log.d("Printed JSON :", prettyJson)
+//                var weatherModel: WeatherModel? = response.body()
+//                if (weatherModel != null) {
+//                    cityName.text = weatherModel.cityName
+//                    temperature.text = weatherModel.temperature
+//                    Picasso.get().load("http:" + weatherModel.icon).into(weatherIcon)
+//                }
+
             }
         })
     }
