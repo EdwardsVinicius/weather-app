@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                     cityName.text = weatherModel.location.cityName
                     temperature.text = weatherModel.current.temperature + "°C"
                     Picasso.get().load("http:" + weatherModel.current.condition.icon).into(weatherIcon)
+//                    weatherCondition.text = weatherModel.current.condition
                 }
 
             }
