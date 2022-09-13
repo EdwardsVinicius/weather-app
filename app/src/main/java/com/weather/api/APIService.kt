@@ -13,7 +13,8 @@ interface APIService {
     @GET("v1/forecast.json")
     fun getWeather(
         @Query("key") key: String = KEY_API,
-        @Query("q") q: String
+        @Query("q") q: String,
+//        @Query("lang") lang: String = "pt"
     )
             : Call<WeatherModel>
 
