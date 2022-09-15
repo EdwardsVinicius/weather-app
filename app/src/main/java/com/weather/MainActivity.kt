@@ -14,6 +14,7 @@ import com.weather.adapters.RecyclerViewAdapter
 import com.weather.api.APIService
 import com.weather.api.RetrofitConfig
 import com.weather.databinding.ActivityMainBinding
+import com.weather.model.HourArrayData
 import com.weather.model.WeatherModel
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -33,12 +34,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherCondition: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var background: ImageView
-    private var weatherModelList: ArrayList<WeatherModel> = arrayListOf()
+    private var weatherModelList: ArrayList<HourArrayData> = arrayListOf()
 
-    private val adapter = RecyclerViewAdapter(
-        context = this,
-        weatherList = weatherModelList.toList()
-    )
+    private lateinit var adapter: RecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         background = binding.activityMainBackground
 
         getWeather()
-        Log.i("ADAPTER", weatherModelList.toString())
+        adapter = RecyclerViewAdapter(weatherModelList)
         recyclerView.adapter = adapter
 
     }
@@ -60,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     fun getWeather(){
         val retrofitClient = RetrofitConfig.getRetrofitInstance()
         val service = retrofitClient.create(APIService::class.java)
-        val callback = service.getWeather(q = "João")
+        val callback = service.getWeather(q = "Manaus")
 
         callback.enqueue(object : Callback<WeatherModel> {
             override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
@@ -76,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                     )
 
 
-                Log.d("Printed JSON :", prettyJson)
+//                Log.d("Printed JSON :", prettyJson)
                 var weatherModel: WeatherModel? = response.body()
                 if (weatherModel != null) {
                     cityName.text = weatherModel.location.cityName
@@ -87,15 +85,16 @@ class MainActivity : AppCompatActivity() {
 
                     if (weatherModel.current.isDay == 1)
                         Picasso.get()
-                            .load("")
+                            .load("https://images.unsplash.com/photo-1556772219-94f40b530c1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80")
                             .into(background)
                     else
                         Picasso.get()
                             .load("https://images.unsplash.com/photo-1533206601904-1a399c3479ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
                             .into(background)
 
-                    for (i in 0..hourArray.size){
-                        weatherModelList.add(weatherModel)
+                    for (e in hourArray){
+                        weatherModelList.add(e)
+                        Log.i("DEBUG_LIST", weatherModelList.toString())
                     }
                 }
 

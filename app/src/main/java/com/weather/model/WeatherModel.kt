@@ -1,9 +1,6 @@
 package com.weather.model
 
-import android.service.notification.Condition
 import com.google.gson.annotations.SerializedName
-import org.json.JSONArray
-import org.json.JSONObject
 
 data class WeatherModel(
     @SerializedName("location")
@@ -47,10 +44,10 @@ data class ForecastData(
 
 data class ForecastDayArray(
     @SerializedName("hour")
-    var hourArray: List<hourArrayData>
+    var hourArray: List<HourArrayData>
 )
 
-data class hourArrayData(
+data class HourArrayData(
     @SerializedName("temp_c")
     var temperature: String,
     @SerializedName("condition")
