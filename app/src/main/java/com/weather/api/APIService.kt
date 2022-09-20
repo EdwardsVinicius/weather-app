@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface APIService {
     private val KEY_API: String
-        get() = "c56873ca779c4f20ad1124010220109"
+        get() = "6dbe6d0a6b5e4a0e84b122337222009"
 
     @GET("v1/forecast.json")
     fun getWeather(
