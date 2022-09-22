@@ -1,6 +1,7 @@
-package com.weather.model
+package com.weather.ui.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class WeatherModel(
     @SerializedName("location")
@@ -14,6 +15,8 @@ data class WeatherModel(
 data class LocationData(
     @SerializedName("name")
     var cityName: String,
+    @SerializedName("region")
+    var region: String,
     @SerializedName("localtime")
     var time: String
 
@@ -43,15 +46,17 @@ data class ForecastData(
 )
 
 data class ForecastDayArray(
-    @SerializedName("hour")
-    var hourArray: List<HourArrayData>
+    @SerializedName("date")
+    var date: Date,
+    @SerializedName("day")
+    var dayData: DayData
 )
 
-data class HourArrayData(
-    @SerializedName("temp_c")
-    var temperature: String,
+data class DayData(
+    @SerializedName("maxtemp_c")
+    var maxTemp: String,
+    @SerializedName("mintemp_c")
+    var minTemp: String,
     @SerializedName("condition")
-    var condition: ConditionData,
-    @SerializedName("wind_kph")
-    var windSpeed: String
+    var condition: ConditionData
 )

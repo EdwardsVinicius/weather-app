@@ -2,7 +2,7 @@
     <string name="app_name">Weather App</string>
 
     <string name="temperature">--°C</string>
-    <string name="city_name"> </string>
-    <string name="weather_condition"> </string>
+    <string name="city_name">City Name </string>
+    <string name="weather_condition">Weather Condition</string>
 
 </resources>

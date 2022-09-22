@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/Vinicius Edwards/AndroidStudioProjects/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/drawable/card_back.xml" value="0.1545" />
-        <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
-        <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/layout/weather_recycler_view_item.xml" value="0.536" />
+        <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/drawable/image_button_selector.xml" value="0.1" />
+        <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Vinicius Edwards/Documents/GitHub/weather-app/app/src/main/res/layout/weather_recycler_view_item.xml" value="0.72" />
       </map>
     </option>
   </component>
