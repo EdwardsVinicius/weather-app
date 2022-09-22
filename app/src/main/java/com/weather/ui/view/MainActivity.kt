@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun getWeather(local: String) {
+    private fun getWeather(local: String) {
 
 
         val retrofitClient = RetrofitConfig.getRetrofitInstance()

@@ -1,6 +1,6 @@
 package com.weather.database
 
-import android.arch.persistence.room.*
+import androidx.room.*
 
 @Dao
 interface WeatherDAO {
